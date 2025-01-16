@@ -40,17 +40,37 @@ public class RentPaymentNoticeApplication {
     	System.out.println("event: " + event);
         final String originalMessageText = ((TextMessageContent) event.message()).text();
         List<Message> message = new ArrayList<Message>();
-        if (originalMessageText.equals("うん")) {
-        	message = List.of(new TextMessage("こ"), new TextMessage("したい"));
-        } else if (originalMessageText.contains("おやすみ")) {
+        if (
+        		originalMessageText.contains("おやすみ") ||
+        		originalMessageText.contains("Good night")
+        ) {
         	message = List.of(new TextMessage("おやゆび〜"));
-        } else if (originalMessageText.contains("うんこ")) {
+        } else if (
+        		originalMessageText.contains("うんこ") ||
+        		originalMessageText.contains("うんち")
+        ) {
         	message = List.of(new TextMessage("きちゃないねん"));
-        } else if (originalMessageText.contains("好き") || originalMessageText.contains("愛してる")) {
+        } else if (
+        		originalMessageText.contains("好き") ||
+        		originalMessageText.contains("愛してる") ||
+        		originalMessageText.contains("すき")
+        ) {
         	message = List.of(new TextMessage("わいもやで"));
-        } else if (originalMessageText.contains("おはよう") || originalMessageText.contains("こんにちは")) {
-        	message = List.of(new TextMessage("ナマステ"));
-        } else if (originalMessageText.contains("バイバイ") || originalMessageText.contains("ばいばい") || originalMessageText.contains("またね")) {
+        } else if (
+        		originalMessageText.contains("おはよ") ||
+        		originalMessageText.contains("こんにちは") ||
+        		originalMessageText.contains("こんばん")
+        ) {
+        	message = List.of(new TextMessage("ナマステ〜"));
+        } else if (
+        		originalMessageText.contains("バイバイ") ||
+        		originalMessageText.contains("ばいばい") ||
+        		originalMessageText.contains("またね") ||
+        		originalMessageText.contains("また明日") ||
+        		originalMessageText.contains("またあした") ||
+        		originalMessageText.contains("さよ") &&
+        		originalMessageText.contains("なら")
+        ) {
         	message = List.of(new TextMessage("ほなね！"));
         } else {
         	message = List.of(new TextMessage("やかましいわ"));
